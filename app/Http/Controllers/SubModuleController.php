@@ -37,7 +37,7 @@ class SubModuleController extends Controller
                 'content' => 'mimes:mp4,ppt,pptx|required|max:2000480',
                 'content_resource' => 'nullable|mimes:pdf,docs,doc,docx|max:10240',
                 'content_url' => 'nullable|max:255',
-                'content_duration' => 'required|numeric',
+                // 'content_duration' => 'numeric',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -56,7 +56,7 @@ class SubModuleController extends Controller
             $input['module_id'] = $request->module_id;
             $input['content_type'] = $request->content_type;
             $input['content_title'] = $request->content_title;
-            $input['timer'] = $request->content_duration;
+            // $input['timer'] = $request->content_duration;
             $input['youtube_path'] = $request->content_url ?? null;
 
             $sub_module_instace = new SubModule();
@@ -90,7 +90,7 @@ class SubModuleController extends Controller
                 'content_resource' => 'nullable|mimes:pdf,docs,doc,docx|max:10240',
                 'content_url' => 'nullable|max:255',
                 'sub_module_id' => 'required',
-                'content_duration' => 'required|numeric',
+                // 'content_duration' => 'numeric',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -121,9 +121,12 @@ class SubModuleController extends Controller
             $input['module_id'] = $request->module_id;
             $input['content_type'] = $request->content_type;
             $input['content_title'] = $request->content_title;
-            $input['timer'] = $request->content_duration;
+            // $input['timer'] = $request->content_duration;
             $input['youtube_path'] = request()->hasfile('content_resource') == true ? null : ($request->content_url ?? null);
-            $input['content_resource'] = request()->hasfile('content_resource') == true ? $sub_module_instace->uploadContent('content_resource', $sub_module_instace->content_resource) : ($sub_module_instace->content_resource ?? null);
+            
+          
+
+            $input['content_resource'] = request()->hasfile('content_resource') == true ? $sub_module_instace->uploadContent('content_resource', $sub_module_instace->content_resource) : ($request->content_url == null ? $sub_module_instace->content_resource : null);
 
 
             $input['content_path'] = request()->hasfile('content') == true ? $sub_module_instace->uploadContent('content', $sub_module_instace->content_path) : $sub_module_instace->content_path;
@@ -174,5 +177,9 @@ class SubModuleController extends Controller
             Toastr::error('Something wrong!', '', ["positionClass" => "toast-top-right"]);
             return redirect()->route('admin.course_sub_module.index', ['module_id' => $module_id]);
         }
+    }
+
+    protected function uploadSubModioulFile(Request $request){
+
     }
 }

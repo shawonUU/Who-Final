@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoFrameController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseEnrollmentController;
+use App\Http\Controllers\SubModuleController;
 use App\Models\CourseEnrollment;
 // use File;
 /*
@@ -29,6 +30,8 @@ Route::get('/test', function () {
     // }
     // return \File::get(public_path() . '/modules/module5-draft-1/index.html');
 });
+
+Route::post('upload/sub/modioul/file', [SubModuleController::class, 'uploadSubModioulFile'])->name('upload_sub_modioul_file');
 
 //   Route::get('/test-ano', function() {
 //     return \File::get(public_path() . '/modules/module7-draft-1/index.html');

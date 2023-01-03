@@ -97,19 +97,46 @@
   </div>
     <div class="modal-dialog modal-lg" role="document">
         {{-- action="{{ route('admin.course_sub_module.store') }}" method="post" --}}
-        <form id="course_subModuleStore_form" class="course_store_modal_form"  enctype="multipart/form-data">@csrf
-            <div class="modal-content">
-                <div class="modal-header bg-img">
-                </div>
-                <div class="modal-body">
+        <div class="modal-content">
+          <div class="modal-header bg-img">
+            </div>
+            <div class="modal-body">
+                  <form id="course_subModuleStore_form" class="course_store_modal_form"  enctype="multipart/form-data">
+                    @csrf
                     @include('admin.course_sub_modules.fields')
+                  </form>
+                  <form action="{{route('upload_sub_modioul_file')}}" class="dropzone" id="my-awesome-dropzone">
+                    @csrf
+                  </form>
+
+
+                  <div class="form-group row text-left">
+                      <div class="col-md-4">
+                        <label>Select Resource Type</label>
+                        <select name="resourceOptions" onchange="changeResorceType(this)" id="ResourceOptions" class="form-control resourceOptionsFilter"> 
+                            <option value="" selected>{{ __('Select One') }}</option>
+                            <option value="1">{{ __('Add URL') }}</option>
+                            <option value="2">{{ __('Add File') }}</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row text-left">
+                      <div class="col-md-12">
+                        <div class="resource-section hidden" id="resource_section"> <!--resource section render here -->
+                        </div>
+                      </div>
+                    </div>
+
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                    <button type="submit" class="btn btn-primary from-prevent-multiple-submits">{{__('Save')}}</button>
+                    <button type="submit" onclick="submitForm()" class="btn btn-primary from-prevent-multiple-submits">{{__('Save')}}</button>
                 </div>
             </div>
-        </form>
     </div>
 
 </div>
@@ -228,7 +255,7 @@ $('#resource_section').on('click','.close-icon', function() {
                         <label>{{ __('Files(docs/pdf)') }}
                         <div class="input-group">
                             <div class="custom-file">
-                               <input class="form-control" id="content_resource" type="file" name="content_resource" value="">
+                               <input class="form-control" onchange="changecontentFile(this)" id="content_resource" type="file" name="content_resource" value="">
                             </div>
                         </div>
                     </div>
@@ -244,7 +271,7 @@ $('#resource_section').on('click','.close-icon', function() {
             <div class="card-block">
                 <blockquote class="card-blockquote">
                     <div class="form-group mb-3">
-                        <input class="form-control" id="content_url" type="text" name="content_url" value="" placeholder="Write an URL">
+                        <input class="form-control" onchange="changecontentUrl(this)" id="content_url" type="text" name="content_url" value="" placeholder="Write an URL">
                     </div>
                 </blockquote>
             </div>

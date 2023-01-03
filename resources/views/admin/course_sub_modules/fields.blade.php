@@ -10,8 +10,8 @@
 </div>
 <div class="form-group mb-3 col-md-6">
   <label>{{__('Content Type')}}</label>
-  <select name="content_type" class="form-control content_typeFilter" required> 
-    <option value="" selected>{{ __('Select One') }}</option>
+  <select onchange="changeVideoPresentation(this)" id="videoPresentation" name="content_type" class="form-control content_typeFilter" required> 
+    <option value="" selected>{{ __('-- Select One --') }}</option>
     <option value="video">{{ __('Video(mp4)') }}</option>
     <option value="presentation">{{ __('Presentation (ppt,pptx)') }}</option>
  </select> 
@@ -23,6 +23,8 @@
             {!! Form::file('content[]', ['class' => 'form-control']) !!}
         </div>
     </div> --}}
+
+
     <div class="row">
         <div class="col-md-12">
           <div class="form-group">
@@ -31,9 +33,10 @@
                 <div class="box-header with-border">
                   <div></div>
                   <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-danger btn-xs remove-preview">
+                    <!-- <button type="button" class="btn btn-danger btn-xs remove-preview">
                       <i class="fa fa-times"></i>
-                    </button>
+                    </button> -->
+                    
                   </div>
                 </div>
                 <div class="box-body"></div>
@@ -44,23 +47,26 @@
                 <i class="glyphicon glyphicon-download-alt"></i>
                 <p>Choose an video/presentation file or drag it here.</p>
               </div>
-              <input type="file" name="content" class="dropzone" required>
+              <input id="videoPpt" type="file" name="content" class="d-none" required>
+              <!-- <input type="file" name="content" class="dropzone" required> -->
             </div>
           </div>
         </div>
     </div>
     <div class=" form-group row text-left">
-      <div class="col-md-4">
-          <label>Select Resource Type</label>
-          <select name="resourceOptions" class="form-control resourceOptionsFilter"> 
+      <div class="col-md-1">
+          <!-- <label>Select Resource Type</label> -->
+          <select name="resourceOptions" id="realResourceOptions" class="d-none form-control resourceOptionsFilter"> 
              <option value="" selected>{{ __('Select One') }}</option>
              <option value="1">{{ __('Add URL') }}</option>
              <option value="2">{{ __('Add File') }}</option>
           </select>
+          <input id="realFile" type="file" class="d-none">
+          <input id="realUrl" type="text" class="d-none">
       </div>
    </div>
-    <div class="col-12 resource-section hidden" id="resource_section"> <!--resource section render here -->
-    </div>
+    <!-- <div class="col-12 resource-section hidden" id="resource_section"> resource section render here -->
+    <!-- </div> -->
 
 @push('script')
    
