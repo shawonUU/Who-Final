@@ -1,0 +1,119 @@
+
+
+*{
+	box-sizing: border-box;
+}
+
+.accordian{
+	width:80%;
+	display: block;
+	margin: 25px auto;
+}
+
+.accordian > .togglediv{
+	box-shadow: 0px 0px 20px #d4d4d4;
+	margin-bottom:20px;
+	float: left;
+	width: 100%;
+}
+.accordian >.togglediv> .togglediv-header h4{
+	cursor: pointer;
+	color:#ffffff;
+	position: relative;
+	background-color: #1CABE2;
+	margin:0;
+	padding:15px 20px;
+
+}
+.accordian .togglediv .togglediv-header {
+	position: relative;
+}
+.accordian .togglediv .togglediv-header span{
+	position: absolute;
+	right:20px;
+	top:12px;
+	height:25px;
+	width:25px;
+	color:#1CABE2;
+	background-color: #ffffff;
+	border-radius:50%;
+	text-align: center;
+	line-height:25px;
+	font-size:13px;
+}
+
+.accordian .togglediv .togglediv-body{
+	padding:20px;
+}
+.accordian .togglediv .togglediv-body{
+	display: none;
+}
+/*open one togglediv by default*/
+.accordian .togglediv:nth-child(1) .togglediv-body{
+ display: block;
+}
+.accordian .togglediv .togglediv-body p{
+	font-size: 15px;
+	line-height: 24px;
+	color:#444444;
+	margin:0px;
+}
+
+.accordian-custom{
+	width:80%;
+	display: block;
+	margin: 25px auto;
+}
+
+.accordian-custom > .togglediv-custom{
+	box-shadow: 0px 0px 20px #d4d4d4;
+	margin-bottom:5px;
+	float: left;
+	width: 100%;
+}
+.accordian-custom >.togglediv-custom> .togglediv-header-custom h6{
+	cursor: pointer;
+	color:#273043;
+	position: relative;
+	background-color: #F1FBFF;
+	margin:0;
+	padding:15px 20px;
+
+}
+.accordian-custom >.togglediv-custom> .togglediv-header-custom h6:hover{
+		color:#3A5DCB;
+}
+.accordian-custom .togglediv-custom .togglediv-header-custom {
+	position: relative;
+}
+.accordian-custom .togglediv-custom .togglediv-header-custom span{
+	position: absolute;
+	right:20px;
+	top:12px;
+	height:25px;
+	width:25px;
+	color:#1CABE2;
+	background-color: #ffffff;
+	border-radius:50%;
+	text-align: center;
+	line-height:25px;
+	font-size:13px;
+}
+
+.accordian-custom .togglediv-custom .togglediv-body-custom{
+	padding:20px;
+}
+.accordian-custom .togglediv-custom .togglediv-body-custom{
+	display: none;
+}
+/*open one togglediv by default*/
+.accordian-custom .togglediv-custom:nth-child(1) .togglediv-body-custom{
+ display: block;
+}
+.accordian-custom .togglediv-custom .togglediv-body-custom p{
+	font-size: 15px;
+	line-height: 24px;
+	color:#444444;
+	margin:0px;
+}
+
